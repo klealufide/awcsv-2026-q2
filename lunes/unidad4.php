@@ -9,7 +9,7 @@
 <body>
 
     <?php
-
+    session_start();
     echo "Hola mundo en PHP!";
 
     $nombre = "Karol";
@@ -141,7 +141,124 @@
     } while ($edad < 10);
 
 
+    $array = [
+        "primera" => 2,
+        "nombre" => "Karol",
+        2 => 10,
+        "edad" => 36,
+        ["cocinar", "leer", "caminar"],
+        15
+    ];
+
+    print_r($array);
+    echo SALTO_LINEA;
+    // INDEXADO
+    $hobbies = ["leer", "cocinar", "bailar"];
+
+    print_r($hobbies);
+
+    echo $hobbies[2] . SALTO_LINEA;
+
+    // ASOCIATIVO
+
+    $persona = ["nombre" => "Karol", "apellido" => "Leal", "edad" => 36];
+    print_r($persona);
+    echo $persona["edad"];
+
+    $persona["hobbies"] = $hobbies;
+    echo SALTO_LINEA;
+    print_r($persona);
+
+    $frutas = array("banano", "fresa", "melon");
+
+
+    echo SALTO_LINEA;
+    print_r($frutas);
+
+
+    $frutas1 = ["banano", "fresa", "melon"];
+
+
+    echo SALTO_LINEA;
+    print_r($frutas1);
+
+    $persona2 = ["nombre" => "Ana", "apellido" => "Mora", "edad" => 20];
+
+    $persona3 = ["nombre" => "Juan", "apellido" => "Perez", "edad" => 25];
+
+    $estudiantes = [
+        $persona,
+        $persona2,
+        $persona3
+    ];
+
+    echo SALTO_LINEA;
+    print_r($estudiantes);
+
+    foreach ($estudiantes as $estudiante) {
+        if ($estudiante['edad'] > 20) {
+            echo $estudiante["nombre"] . SALTO_LINEA;
+        }
+    }
+    echo SALTO_LINEA;
+    echo $estudiantes[2]['edad'];
+
+    $array = [1, 2, 3, 4, 5];
+    echo SALTO_LINEA;
+    array_push($array, 6);
+    print_r($array);
+    echo SALTO_LINEA;
+    $posicion = array_search(4, $array);
+    echo $posicion;
+
+    echo SALTO_LINEA;
+
+    function sumar($a, $b)
+    {
+        return $a + $b;
+    }
+    echo SALTO_LINEA;
+    echo sumar(5, 6);
+
+    $sumar = function ($a, $b) {
+        return $a + $b;
+    };
+
+    echo SALTO_LINEA;
+    echo $sumar(10, 20);
+    echo SALTO_LINEA;
+    $duplicar = fn($n) => $n * 2;
+    echo $duplicar(16);
+
+    /// ARCHIVOS
+
+    $archivo = fopen("archivo.txt", "w");
+    $txt = "nuevo texto \n";
+    fwrite($archivo, $txt);
+    $txt = "nuevo texto 2\n";
+    fwrite($archivo, $txt);
+    fclose($archivo);
+
+    $archivo = fopen("archivo.txt", "r");
+    while (!feof($archivo)) {
+        echo fgets($archivo) . SALTO_LINEA;
+    }
+    fclose($archivo);
+    $_SESSION["username"] = "kleal";
+    $_SESSION["rol"] = "admin";
+    print_r($_SESSION); // arreglo asociativo;
+
+    if($_SESSION["rol"] == "admin"){
+        echo "el rol es admin";
+    }
+
+    echo $_SESSION["username"] ;
+
+    //session_destroy();
+    print_r($_SESSION);
+
     ?>
+    <a href="session.php">Session</a>
 </body>
 
 </html>

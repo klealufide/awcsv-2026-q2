@@ -125,16 +125,21 @@
     }
 
     while ($edad < 40) { //entra solo si cumple condicion
-        echo $edad ."WHILE". saltoLinea;
+        echo $edad . "WHILE" . saltoLinea;
         $edad++;
     }
 
-    do {// primero hace y luego pregunta
-        echo $edad ."DOWHILE". saltoLinea;
+    do { // primero hace y luego pregunta
+        echo $edad . "DOWHILE" . saltoLinea;
         $edad++;
     } while ($edad < 40);
     ?>
 
+    <ul>
+        <li><?php echo $nombre;?></li>
+        <li><?php echo $edad;?></li>
+        <li></li>
+    </ul>
 </body>
 
 </html>
