@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +10,6 @@
 <body>
 
     <?php
-    session_start();
     echo "Hola mundo en PHP!";
 
     $nombre = "Karol";
@@ -248,11 +248,11 @@
     $_SESSION["rol"] = "admin";
     print_r($_SESSION); // arreglo asociativo;
 
-    if($_SESSION["rol"] == "admin"){
+    if ($_SESSION["rol"] == "admin") {
         echo "el rol es admin";
     }
 
-    echo $_SESSION["username"] ;
+    echo $_SESSION["username"];
 
     //session_destroy();
     print_r($_SESSION);
