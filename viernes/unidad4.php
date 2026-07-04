@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -133,13 +134,156 @@
         echo $edad . "DOWHILE" . saltoLinea;
         $edad++;
     } while ($edad < 40);
+
+
+
     ?>
 
     <ul>
-        <li><?php echo $nombre;?></li>
-        <li><?php echo $edad;?></li>
+        <li><?php echo $nombre; ?></li>
+        <li><?php echo $edad; ?></li>
         <li></li>
     </ul>
+
+    <?php
+
+    //indexado
+    $hobbies = array(
+        "leer",
+        "escribir",
+        "bailar"
+    );
+
+    $frutas = [
+        "banano",
+        "pera",
+        "manzana"
+    ];
+    //asociativo
+    $estudiante = [
+        "nombre" => "Karol",
+        "apellido" => "Leal",
+        "edad" => 36,
+        "esProfesor" => true,
+        "hobbies" => [
+            "cantar",
+            "tejer",
+            "caminar"
+        ]
+    ];
+
+
+    $estudiante2 = [
+        "nombre" => "Pedro",
+        "apellido" => "Arias",
+        "edad" => 20,
+        "esProfesor" => false,
+        "hobbies" => ["cocinar", "correr", "dormir"]
+    ];
+
+
+    $estudiante3 = [
+        "nombre" => "Juan",
+        "apellido" => "Mora",
+        "edad" => 25,
+        "esProfesor" => false
+    ];
+
+    print_r($estudiante);
+    echo  saltoLinea;
+
+    $estudiante3["hobbies"] = $hobbies;
+    print_r($estudiante3);
+    echo  saltoLinea;
+
+    echo $estudiante["nombre"] . saltoLinea;
+    echo $frutas[1] . saltoLinea;
+
+    //multidimensional
+
+    $listaEstudiantes = [
+        $estudiante,
+        $estudiante2,
+        $estudiante3
+    ];
+
+    print_r($listaEstudiantes);
+
+
+    foreach ($listaEstudiantes as $estudiante) {
+        if ($estudiante["edad"]  >= 25) {
+            echo $estudiante["nombre"] . saltoLinea;
+        }
+    }
+
+    foreach ($listaEstudiantes as $estudiante) {
+        foreach ($estudiante["hobbies"] as $hobbie) {
+            echo $hobbie . saltoLinea;
+        }
+    }
+
+    echo $listaEstudiantes[2]["apellido"] . saltoLinea;
+
+
+    array_push($frutas, "melon");
+
+    print_r($frutas);
+
+    $index = array_search("melon", $frutas);
+    echo $index . " = " . $frutas[$index] . saltoLinea;
+
+    $arreglo_fusionado = array_merge($frutas, $estudiante);
+    print_r($arreglo_fusionado);
+    echo saltoLinea;
+
+    function sumar($a, $b)
+    {
+        return $a + $b;
+    }
+
+    $resultado = sumar(7, 8);
+
+    echo $resultado . saltoLinea;
+
+    $sumar =  function ($a, $b) {
+        return $a + $b;
+    };
+
+    echo $sumar(80, 90) . saltoLinea;
+
+    $duplicar = fn($a) => $a * 2;
+
+    echo $duplicar(8) . saltoLinea;
+
+    $archivo = fopen("archivo.txt", "w"); //a
+    $txt = "Hola a todos\n";
+    fwrite($archivo, $txt);
+
+    $txt = "Hola a todos otra vez\n";
+    fwrite($archivo, $txt);
+
+    fclose($archivo);
+
+
+    $archivo = fopen("archivo.txt", "r");
+
+    while (!feof($archivo)) {
+        echo fgets($archivo) . saltoLinea;
+    }
+
+    fclose($archivo);
+
+    $_SESSION["usuario"] = "kleal";
+    $_SESSION["rol"] = "admin";
+
+
+    print_r($_SESSION);
+
+
+    echo $_SESSION["rol"];
+    ?>
+    <a href="sesion.php">Sesion</a>
+
 </body>
 
 </html>
