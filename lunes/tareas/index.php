@@ -7,6 +7,8 @@ $action         = $_GET['action']     ?? 'index';
 $method         = $_SERVER['REQUEST_METHOD'];
 $id             = isset($_GET['id']) ? (int) $_GET['id'] : null;
 
+
+
 $controllerFile  = __DIR__ . '/controllers/' . ucfirst($controllerName) . 'Controller.php';
 
 if (!file_exists($controllerFile)) {

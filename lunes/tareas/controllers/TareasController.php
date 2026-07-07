@@ -58,7 +58,6 @@ class TareasController
     public function edit(int $id): void
     {
         $tarea = $this->model->getById($id);
-
         if (!$tarea) {
             http_response_code(404);
             die('<h2>Tarea no encontrada.</h2>');

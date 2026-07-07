@@ -21,7 +21,7 @@ class TareaModel
         $stmt = $this->db->query(
             'SELECT * FROM tareas ORDER BY fecha_limite ASC'
         );
-        return $stmt->fetchAll(); // retorna array de arrays asociativos
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // retorna array de arrays asociativos
     }
 
     // ────────────────────────────────────────────────────────
