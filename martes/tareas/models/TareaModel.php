@@ -33,7 +33,7 @@ class TareaModel
             'SELECT * FROM tareas WHERE id = :id'
         );
         $stmt->execute([':id' => $id]);
-        return $stmt->fetch();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     // ────────────────────────────────────────────────────────
