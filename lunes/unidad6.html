@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unidad 6</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script src="./js/unidad6.js"></script>
+        <style>
+            .error {
+                border-color: red;
+            }
+
+            .okay {
+                border-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="principal">
+            <h2 class="subtitulo">Nueva Tarea</h2>
+            <form>
+                <div id="mensaje"></div>
+                <input id="tarea" name="tarea" class="input">
+                <input type="button" class="input" id="btnAgregar"
+                    value="Agregar Tarea">
+            </form>
+        </section>
+        <section class="subtitulo" data-profesor-1 id="tareas">
+            <div id="mensajelista"></div>
+            <ul id="listaTareas">
+                <li data-tarea="1">Hacer el desayuno</li>
+                <li data-tarea="2">Hacer la tarea</li>
+            </ul>
+        </section>
+        <div id="contenido">
+
+        </div>
+        <a href="https://google.com">Google</a>
+    </body>
+</html>
