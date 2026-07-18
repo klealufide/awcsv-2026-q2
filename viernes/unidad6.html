@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unidad 6</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script src="./js/unidad6.js"></script>
+        <meta charset="UTF-8">
+        <style>
+        #principal {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border: 2px solid orange;
+            padding: 10px;
+        }
+
+        #tarea {
+            width: 400px;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .error {
+            border-color: red;
+        }
+
+        #cuadrado {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+
+        .rosado {
+            background-color: pink!important;
+        }
+    </style>
+    </head>
+
+    <body>
+        <section id="principal">
+            <h2 class="grupoClase">Nueva Tarea</h2>
+            <span id="mensaje"></span>
+            <form>
+                <input id="tarea" name="tarea">
+                <input id="btnAgregar" type="button" value="Agregar Tarea">
+                <input id="btnSeleccionar" type="button" value="Seleccionar UL">
+            </form>
+        </section>
+        <section id="tareas">
+            <ul id="listaTareas">
+                <li data-tarea="1" class="grupoClase">Tarea 1</li>
+                <li data-tarea="2" class="grupoClase">Tarea 2</li>
+            </ul>
+        </section>
+        <div id="contenido">
+            <h5>Contenido</h5>
+            <p>Parrafo</p>
+        </div>
+        <a href="http://www.google.com" target="_blank">Google</a>
+
+        <div id="cuadrado"></div>
+        <div>
+            <button id="btnOcultar">Ocultar</button>
+            <button id="btnMostrar">Mostrar</button>
+            <button id="btnAgrandar">Agrandar</button>
+            <button id="btnOriginal">Original</button>
+            <button id="btnRosado">Color Rosado</button>
+        </div>
+    </body>
+</html>
