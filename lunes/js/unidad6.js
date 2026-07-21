@@ -24,14 +24,17 @@ $(function () {
     let btnAgregar = $("#btnAgregar");
 
     let url = $("a");
-    url.attr("href","https://campus.ufidelitas.ac.cr/");
-
+    url.attr("href", "https://campus.ufidelitas.ac.cr/");
+    let contador = 2;
+    contenido.append("<h2 id='nuevoTitulo'>Nuevo titulo</h2>");
+    let nuevoTitulo = $("#nuevoTitulo");
+    nuevoTitulo.addClass("alerta");
 
     btnAgregar.on("click", function () {
         // input
         let nuevaTarea = $("#tarea");
         let tarea = nuevaTarea.val();
-
+        let listaTareas = $("#listaTareas");
         console.log(tarea);
 
 
@@ -45,15 +48,8 @@ $(function () {
             // nuevaTarea.css("border-color","black");
             nuevaTarea.removeClass("error");
             mostrarMensaje(2);
-            /*
-    
-            // la lista de tareas (ul)
-            let nuevoLiTareas = document.createElement("li");
-            nuevoLiTareas.innerText = tarea;
-            nuevoLiTareas.dataset.tarea = contador++;
-            listaTareas.appendChild(nuevoLiTareas);
-            nuevaTarea.value = "";
-            */
+            listaTareas.prepend("<li data-tarea='" + contador + "'>" + tarea + "</li>")
+            nuevaTarea.val("");
         }
 
         function mostrarMensaje(opcion) {
@@ -72,5 +68,43 @@ $(function () {
             }, 2000);
         }
 
+    })
+
+    let btnMostrar = $("#btnMostrar");
+    let btnOcultar = $("#btnOcultar");
+    let cuadrado = $("#cuadrado");
+
+    let btnAgrandar = $("#btnAgrandar");
+    let btnRestablecer = $("#btnRestablecer");
+    let btnCambioColor = $("#btnCambioColor");
+
+    btnMostrar.on("click", function () {
+        cuadrado.fadeIn(1000);
+    })
+
+    btnOcultar.on("click", function () {
+        cuadrado.fadeOut(1000);
+    })
+
+    btnCambioColor.on("click", function () {
+        cuadrado.toggleClass("rosado");
+    })
+
+
+    btnAgrandar.on("click", function () {
+        cuadrado.animate({
+            width: '500px',
+            height: '500px',
+            opacity: 0.5
+        }, 1000);
+    })
+
+
+    btnRestablecer.on("click", function () {
+        cuadrado.animate({
+            width: '200px',
+            height: '200px',
+            opacity: 1
+        }, 1000);
     })
 });
