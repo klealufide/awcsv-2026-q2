@@ -26,6 +26,8 @@ $(function () {
     let contenido = $("#contenido");
     contenido.html("<h3>Nueva seccion</h3>");
 
+    let contenido2 = $("#contenido2");
+    contenido2.prepend("<p>Parrafo4</p>")
 
     let btnAgregar = $("#btnAgregar");
 
@@ -34,7 +36,7 @@ $(function () {
     let url = $("a");
     url.attr("href", "https://sam.ufidelitas.ac.cr")
 
-
+    let contador = 2;
     btnAgregar.on("click", function () {
         let txtTarea = $("#tarea");
         console.log(txtTarea.val())
@@ -42,16 +44,8 @@ $(function () {
         if (txtTarea.val() != "") {
             // txtTarea.css("border-color", "black");
             txtTarea.removeClass("error");
-            /*
-            
-
-            let nuevoLi = document.createElement("li");
-            nuevoLi.innerText = txtTarea.value;
-            console.log(contador);
-            nuevoLi.dataset.id = contador++;
-            listaTareas.appendChild(nuevoLi);
-
-            */
+            listaTareas.prepend("<li data-id='" + contador + "'>" + txtTarea.val() + "</li>");
+            contador++;
 
             mostrarMensaje(2);
             txtTarea.val("");
@@ -85,6 +79,39 @@ $(function () {
 
     }
 
+    let cuadrado = $("#cuadrado");
 
+    let btnMostrar = $("#btnMostrar");
+    let btnOcultar = $("#btnOcultar");
+    let btnAgrandar = $("#btnAgrandar");
+    let btnOriginal = $("#btnOriginal");
+    let btnRosado = $("#btnRosado");
+
+    btnMostrar.on("click", function () {
+        cuadrado.fadeIn(1000);
+    });
+    btnOcultar.on("click", function () {
+        cuadrado.fadeOut(1000);
+    });
+
+    btnAgrandar.on("click", function () {
+        cuadrado.animate({
+            width: '500px',
+            height: '500px',
+            opacity: 0.5
+        }, 1000);
+    });
+
+    btnOriginal.on("click", function () {
+        cuadrado.animate({
+            width: '200px',
+            height: '200px',
+            opacity: 1
+        }, 1000);
+    });
+
+    btnRosado.on("click", function () {
+        cuadrado.toggleClass("rosado");
+    });
 
 });

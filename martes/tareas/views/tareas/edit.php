@@ -10,49 +10,51 @@ require __DIR__ . '/../layout/header.php';
 
     <h2 class="mb-4"><i class="bi bi-pencil-square me-2"></i>Editar Tarea</h2>
 
-    <?php if (!empty($error)): ?>
-      <div class="alert alert-danger">
-        <i class="bi bi-exclamation-triangle me-2"></i><?= htmlspecialchars($error) ?>
-      </div>
-    <?php endif; ?>
 
-    <form method="POST" action="index.php?controller=tareas&action=update&id=<?= $tarea['id'] ?>">
+      <div class="alert alert-danger" id="sectionEditMessage">
+        <i class="bi bi-exclamation-triangle me-2"></i><span id="editMessage"></span>
+      </div>
+
+
+    <form id="formEditTask" method="POST" action="index.php?controller=tareas&action=update&id=<?= $tarea['id'] ?>">
 
       <div class="mb-3">
         <label for="titulo" class="form-label fw-semibold">Título <span class="text-danger">*</span></label>
         <input type="text"
-               class="form-control"
-               id="titulo"
-               name="titulo"
-               value="<?= htmlspecialchars($tarea['titulo']) ?>"
-               required />
+          class="form-control"
+          id="titulo"
+          name="titulo"
+          value="<?= htmlspecialchars($tarea['titulo']) ?>" />
+        <span class="error" id="errorTitulo"></span>
       </div>
 
       <div class="mb-3">
         <label for="descripcion" class="form-label fw-semibold">Descripción</label>
         <textarea class="form-control"
-                  id="descripcion"
-                  name="descripcion"
-                  rows="3"><?= htmlspecialchars($tarea['descripcion']) ?></textarea>
+          id="descripcion"
+          name="descripcion"
+          rows="3"><?= htmlspecialchars($tarea['descripcion']) ?></textarea>
+        <span class="error" id="errorDescripcion"></span>
       </div>
 
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="estado" class="form-label fw-semibold">Estado</label>
           <select class="form-select" id="estado" name="estado">
-            <option value="pendiente"   <?= $tarea['estado'] === 'pendiente'   ? 'selected' : '' ?>>Pendiente</option>
+            <option value="pendiente" <?= $tarea['estado'] === 'pendiente'   ? 'selected' : '' ?>>Pendiente</option>
             <option value="en progreso" <?= $tarea['estado'] === 'en progreso' ? 'selected' : '' ?>>En progreso</option>
-            <option value="completada"  <?= $tarea['estado'] === 'completada'  ? 'selected' : '' ?>>Completada</option>
+            <option value="completada" <?= $tarea['estado'] === 'completada'  ? 'selected' : '' ?>>Completada</option>
           </select>
+          <span class="error" id="errorEstado"></span>
         </div>
         <div class="col-md-6 mb-3">
           <label for="fecha_limite" class="form-label fw-semibold">Fecha Límite <span class="text-danger">*</span></label>
           <input type="date"
-                 class="form-control"
-                 id="fecha_limite"
-                 name="fecha_limite"
-                 value="<?= htmlspecialchars($tarea['fecha_limite']) ?>"
-                 required />
+            class="form-control"
+            id="fecha_limite"
+            name="fecha_limite"
+            value="<?= htmlspecialchars($tarea['fecha_limite']) ?>" />
+          <span class="error" id="errorFechaLimite"></span>
         </div>
       </div>
 
