@@ -16,7 +16,9 @@ $(function () {
             pokemonEncontrado.html("");
         } else {
             nombrePokemon.removeClass("error");
-            fetch(urlBase + endpoint + nombrePokemon.val())
+            fetch(urlBase + endpoint + nombrePokemon.val(), {
+                method: "update"
+            })
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)

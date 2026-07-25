@@ -12,12 +12,12 @@ require __DIR__ . '/../layout/header.php';
   </a>
 </div>
 
-<?php if (empty($tareas)): ?>
-  <div class="alert alert-info">
+
+  <div class="alert alert-info" id="mensajeCantidadTareas">
     <i class="bi bi-info-circle me-2"></i>No hay tareas registradas.
     <a href="index.php?controller=tareas&action=create">Crear la primera</a>.
   </div>
-<?php else: ?>
+
   <div class="table-responsive">
     <table class="table table-bordered table-hover align-middle">
       <thead class="table-dark">
@@ -30,51 +30,12 @@ require __DIR__ . '/../layout/header.php';
           <th class="text-center">Acciones</th>
         </tr>
       </thead>
-      <tbody>
-        <?php foreach ($tareas as $tarea): ?>
-          <tr>
-            <td><?= $tarea['id'] ?></td>
-            <td><strong><?= htmlspecialchars($tarea['titulo']) ?></strong></td>
-            <td><?= htmlspecialchars($tarea['descripcion']) ?></td>
-            <td>
-              <?php
-                // Asignar clase de badge según el estado
-                $badges = [
-                  'pendiente'   => 'bg-warning text-dark',
-                  'en progreso' => 'bg-info text-dark',
-                  'completada'  => 'bg-success',
-                ];
-                $badge = $badges[$tarea['estado']] ?? 'bg-secondary';
-              ?>
-              <span class="badge <?= $badge ?>">
-                <?= htmlspecialchars($tarea['estado']) ?>
-              </span>
-            </td>
-            <td><?= htmlspecialchars($tarea['fecha_limite']) ?></td>
-            <td class="text-center">
-              <!-- Botón Editar — GET -->
-              <a href="index.php?controller=tareas&action=edit&id=<?= $tarea['id'] ?>"
-                 class="btn btn-sm btn-warning me-1">
-                <i class="bi bi-pencil"></i> Editar
-              </a>
-
-              <!-- Botón Eliminar — POST mediante formulario -->
-              <!-- Se usa un form con método POST porque DELETE nunca debe ser GET -->
-              <form method="POST"
-                    action="index.php?controller=tareas&action=delete&id=<?= $tarea['id'] ?>"
-                    class="d-inline"
-                    onsubmit="return confirm('¿Eliminar esta tarea?')">
-                <button type="submit" class="btn btn-sm btn-danger">
-                  <i class="bi bi-trash"></i> Eliminar
-                </button>
-              </form>
-            </td>
-          </tr>
-        <?php endforeach; ?>
+      <tbody id="listaTareas">
+        
       </tbody>
     </table>
   </div>
-  <p class="text-muted">Total: <?= count($tareas) ?> tarea(s) registrada(s).</p>
-<?php endif; ?>
+  <p class="text-muted">Total: <span id="totalTareas"></span> tarea(s) registrada(s).</p>
+
 
 <?php require __DIR__ . '/../layout/footer.php'; ?>

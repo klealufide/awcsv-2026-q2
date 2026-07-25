@@ -30,7 +30,7 @@ require __DIR__ . '/../layout/header.php';
           <th class="text-center">Acciones</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="listaTareas">
         <?php foreach ($tareas as $tarea): ?>
           <tr>
             <td><?= $tarea['id'] ?></td>

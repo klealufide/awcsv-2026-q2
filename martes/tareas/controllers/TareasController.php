@@ -22,6 +22,12 @@ class TareasController
         require __DIR__ . '/../views/tareas/index.php';
     }
 
+    public function getTareas(): void
+    {
+        $tareas = $this->model->getAll();
+        echo json_encode($tareas);
+    }
+
     // ────────────────────────────────────────────────────────
     //  GET ?action=create
     //  Muestra el formulario de creación vacío
@@ -76,7 +82,7 @@ class TareasController
 
         if (empty($data['titulo']) || empty($data['fecha_limite'])) {
             $error = 'El título y la fecha límite son obligatorios.';
-            $tarea = $data; 
+            $tarea = $data;
             $tarea['id'] = $id;
             require __DIR__ . '/../views/tareas/edit.php';
             return;

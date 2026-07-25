@@ -27,6 +27,13 @@ switch ($action) {
         $controller->index();
         break;
 
+    case 'getTareas':
+        // GET — Mostrar formulario de creación
+        if ($method === 'GET') {
+            $controller->getTareas();
+        }
+        break;
+
     case 'create':
         // GET — Mostrar formulario de creación
         if ($method === 'GET') {
